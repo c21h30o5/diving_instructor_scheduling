@@ -64,6 +64,20 @@ Concurrency Control: การใช้ @api.constrains เพื่อดึง
 **📅 Calendar Management**
 การจัดตารางเรียนแบบเห็นภาพรวมตาม Slot เวลาจริง
 
+นี่คือภาพผลลัพธ์เพิ่มเติมที่แสดงถึงความสามารถในการจัดการตารางงานและการวิเคราะห์ข้อมูลครับ:
+
+| การจัดตารางเรียนแบบเห็นภาพรวมตาม Slot เวลาจริง | ระบบแจ้งเตือนทันทีเมื่อข้อมูลไม่เป็นไปตามเงื่อนไข (Business Rules) |
+|---|---|
+| ![การจัดตารางเรียนแบบเห็นภาพรวมตาม Slot เวลาจริง](./static/description/booking_calendar1.png) | ![ระบบแจ้งเตือนทันทีเมื่อข้อมูลไม่เป็นไปตามเงื่อนไข (Business Rules)](./static/description/validation1.png) |
+
+### 📊 Analysis & Reporting
+> สรุปข้อมูลการเรียนในรูปแบบ Pivot Table และ Graph เพื่อการบริหารจัดการที่มีประสิทธิภาพ
+
+| Pivot Table Summary | Workload Graph |
+|---|---|
+| ![Pivot Table](./static/description/pivot.png) | ![Workload Graph](./static/description/Graph.png) |
+
+
 ## 👨‍💻 Developer Information
 * **Current Version**: 1.0.0
 
