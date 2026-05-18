@@ -64,17 +64,9 @@ Concurrency Control: การใช้ @api.constrains เพื่อดึง
 **📅 Calendar Management**
 การจัดตารางเรียนแบบเห็นภาพรวมตาม Slot เวลาจริง
 
-**👨‍💻 Developer Information**
-
-* **Current Version**: 1.0.0
-
-* **Developer**: Rathanont Ama
-
-* **Experience**: Full-stack Background (MERN Stack) with a focus on ERP Customization & Business Logic.
-
 ## 👨‍💻 Developer Information
 * **Current Version**: 1.0.0
 
 * **Developer**: [Rathanont Ama]
 
-* **Experience**: Full-stack Background (MERN Stack) with a focus on ERP Customization.
+* **Experience**: Full-stack Background (MERN Stack) with a focus on ERP Customization & Business Logic.
