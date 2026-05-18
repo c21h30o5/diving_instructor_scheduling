@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="instructor_safari" model="res.users">
+            <field name="name">Safari</field>
+            <field name="login">Safari@diving.com</field>
+            <field name="is_instructor">True</field>
+        </record>
+
+        <record id="instructor_rose" model="res.users">
+            <field name="name">Rose</field>
+            <field name="login">Rose@diving.com</field>
+            <field name="is_instructor">True</field>
+        </record>
+
+        <record id="instructor_joe" model="res.users">
+            <field name="name">Joe</field>
+            <field name="login">Joe@diving.com</field>
+            <field name="is_instructor">True</field>
+        </record>
+
+        <record id="instructor_rio" model="res.users">
+            <field name="name">Rio</field>
+            <field name="login">Rio@diving.com</field>
+            <field name="is_instructor">True</field>
+        </record>
+    </data>
+</odoo>

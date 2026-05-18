@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_instructor_leave_tree" model="ir.ui.view">
+        <field name="name">instructor.leave.tree</field>
+        <field name="model">instructor.leave</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="instructor_id"/>
+                <field name="leave_date"/>
+                <field name="leave_slot"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_instructor_leave_calendar" model="ir.ui.view">
+        <field name="name">instructor.leave.calendar</field>
+        <field name="model">instructor.leave</field>
+        <field name="arch" type="xml">
+            <calendar string="Instructor Leaves" date_start="leave_date" color="instructor_id" mode="month">
+                <field name="instructor_id"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="action_instructor_leave" model="ir.actions.act_window">
+        <field name="name">Instructor Leaves</field>
+        <field name="res_model">instructor.leave</field>
+        <field name="view_mode">list,calendar</field>
+    </record>
+
+    <menuitem id="menu_instructor_leave" 
+              name="Instructor Leaves" 
+              parent="menu_diving_root" 
+              action="action_instructor_leave" 
+              sequence="20"/>
+</odoo>

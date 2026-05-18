@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_diving_booking_tree" model="ir.ui.view">
+        <field name="name">diving.booking.tree</field>
+        <field name="model">diving.booking</field>
+        <field name="arch" type="xml">
+            <list string="Diving Bookings" decoration-muted="state == 'done'">
+                <field name="name"/>
+                <field name="course_type"/>
+                <field name="requested_lang_id" optional="show"/>
+                <field name="booking_date"/>
+                <field name="booking_slot"/>
+                <field name="student_count" sum="Total Students"/>
+                <field name="instructor_id" widget="many2one_avatar_user"/>
+                <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-success="state == 'confirmed'" decoration-warning="state == 'done'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_diving_booking_form" model="ir.ui.view">
+    <field name="name">diving.booking.form</field>
+    <field name="model">diving.booking</field>
+    <field name="arch" type="xml">
+        <form>
+            <header>
+                <button name="action_confirm" string="Confirm Booking" type="object" 
+                        class="oe_highlight" invisible="state != 'draft'"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"/>
+            </header>
+            <sheet>
+                <div class="oe_title">
+                    <label for="name" string="Booking Reference / Group Name"/>
+                    <h1><field name="name" placeholder="e.g. John Doe Group"/></h1>
+                </div>
+                <group>
+                    <group string="Course &amp; Language">
+                        <field name="course_type"/>
+                        <field name="requested_lang_id" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="student_count" options="{'min': 1}"/>
+                    </group>
+                    <group string="Schedule &amp; Instructor">
+                        <field name="booking_date" string="Start Date"/>
+                        <field name="booking_slot" string="Start Slot"/>
+                        <field name="instructor_id" 
+                               options="{'no_create': True}"
+                               domain="[('is_instructor', '=', True), ('instructor_lang_ids', 'in', requested_lang_id)]"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page string="Student Details">
+                        <field name="student_details" placeholder="รายชื่อนักเรียน และรายละเอียดเพิ่มเติม..."/>
+                    </page>
+                    <page string="System Info" groups="base.group_no_one">
+                        <group>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+    <record id="view_diving_booking_calendar" model="ir.ui.view">
+        <field name="name">diving.booking.calendar</field>
+        <field name="model">diving.booking</field>
+        <field name="arch" type="xml">
+            <calendar string="Diving Schedule" date_start="start_date" date_stop="end_date" color="instructor_id" mode="week" quick_create="0">
+                <field name="name"/>
+                <field name="instructor_id" avatar_field="image_128"/>
+                <field name="course_type"/>
+                <field name="requested_lang_id"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="view_diving_booking_graph" model="ir.ui.view">
+        <field name="name">diving.booking.graph</field>
+        <field name="model">diving.booking</field>
+        <field name="arch" type="xml">
+            <graph string="Booking Analysis" type="bar" sample="1">
+                <field name="course_type"/>
+                <field name="student_count" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_diving_booking_pivot" model="ir.ui.view">
+        <field name="name">diving.booking.pivot</field>
+        <field name="model">diving.booking</field>
+        <field name="arch" type="xml">
+            <pivot string="Booking Analysis" sample="1">
+                <field name="instructor_id" type="row"/>
+                <field name="booking_date" interval="month" type="col"/>
+                <field name="student_count" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_diving_booking" model="ir.actions.act_window">
+        <field name="name">Diving Bookings</field>
+        <field name="res_model">diving.booking</field>
+        <field name="view_mode">list,calendar,form,pivot,graph</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first diving booking!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_diving_root" name="Diving Center" sequence="10" web_icon="base,static/description/icon.png"/>
+    <menuitem id="menu_diving_booking" name="Bookings" parent="menu_diving_root" action="action_diving_booking" sequence="10" />
+
+</odoo>
